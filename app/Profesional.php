@@ -15,7 +15,7 @@ class Profesional extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'run', 'dv', 'password',
+        'run', 'dv', 'password','nombres','apellidop','apellidom','direccion','telefono','mail','fecha_nacimiento',
     ];
 
     /**
