@@ -56,9 +56,9 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;@auth
-                            <li><a href="{{ route('admision') }}">Admision</a></li>
-                            <li><a href="{{ route('categorizacion') }}">Categorizacion</a></li>
+                        @auth
+                            <li class="@if(@$ActiveMenu=='admision')active @endif"><a href="{{ route('admision') }}">Admision</a></li>
+                            <li class="@if(@$ActiveMenu=='categorizacion')active @endif"><a href="{{ route('categorizacion') }}">Categorizacion</a></li>
                         @endauth
                     </ul>
 
@@ -70,7 +70,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->nombres }} <span class="caret"></span>
+                                    {{ Auth::user()->primerNombre() }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">

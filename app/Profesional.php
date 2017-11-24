@@ -35,4 +35,8 @@ class Profesional extends Authenticatable
     public function eventos() {
         return $this->hasMany(AtencionEvento::class);
     }
+    public function primerNombre(){
+	$porcion = explode(' ',$this->nombres);
+	return $porcion[0];
+    }
 }

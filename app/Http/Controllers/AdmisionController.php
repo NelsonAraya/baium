@@ -22,7 +22,7 @@ class AdmisionController extends Controller
     }
     public function index()
     {
-        return view('admision.index');
+        return view('admision.index',['ActiveMenu'=>'admision']);
     }
 
     /**
