@@ -78,7 +78,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    SAPU NELSON-DEV
+                    SAPU NELSON-DEV-DEBIAN
                 </div>
             </div>
         </div>
