@@ -122,7 +122,8 @@ class AdmisionController extends Controller
             ->with('respuesta',$respuesta)
             ->with('pais',$pais)
             ->with('sex',$sexo)
-            ->with('previ',$previ);
+            ->with('previ',$previ)
+            ->with('ActiveMenu','admision');
     }
 
     /**
