@@ -94,7 +94,7 @@ class CategorizacionController extends Controller
 
         $atencion->usuario->cronicos()->detach();
 
-        foreach ($request->cronico as $row){
+        foreach ((array)$request->cronico as $row){
               $atencion->usuario->cronicos()->attach($row);
         }
 
