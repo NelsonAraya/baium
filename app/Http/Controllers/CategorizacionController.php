@@ -80,7 +80,7 @@ class CategorizacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        
         $atencion = Atencion::Find($id);
 
         $atencion->fill($request->all());
@@ -97,9 +97,19 @@ class CategorizacionController extends Controller
         foreach ((array)$request->cronico as $row){
               $atencion->usuario->cronicos()->attach($row);
         }
+        
+        $atencion->usuario->alergias()->detach();
 
+        if($request->alergia!='vacio'){
+            $detalle = array_unique(json_decode($request->alergia, true),SORT_REGULAR);
+            foreach ($detalle as $row) {
+              $atencion->usuario->alergias()->attach($row['ID']);
+            }
+        }
+       
         flash('Paciente Categorizado Correctamente');
         return redirect()->route('categorizacion');
+        
 
     }
 
