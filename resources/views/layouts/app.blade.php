@@ -63,6 +63,7 @@
                         @auth
                             <li class="@if(@$ActiveMenu=='admision')active @endif"><a href="{{ route('admision') }}">Admision</a></li>
                             <li class="@if(@$ActiveMenu=='categorizacion')active @endif"><a href="{{ route('categorizacion') }}">Categorizacion</a></li>
+                            <li class="@if(@$ActiveMenu=='atencion')active @endif"><a href="{{ route('atencion.index') }}">Atencion</a></li>
                         @endauth
                     </ul>
 
@@ -96,8 +97,7 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
     </div>  
+    @yield('content')
 </body>
 </html>

@@ -20,7 +20,7 @@ class CategorizacionController extends Controller
 
     public function index()
     {
-        $atencion = Atencion::where('estado_id',1)->orderBy('id','DESC')->paginate(5);
+        $atencion = Atencion::orderBy('id','DESC')->paginate(10);
         return view('categorizacion.index',['aten'=>$atencion,'ActiveMenu'=>'categorizacion']);
     }
 

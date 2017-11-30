@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Atencion;
 class AtencionController extends Controller
 {
     
@@ -18,7 +18,8 @@ class AtencionController extends Controller
      */
     public function index()
     {
-        //
+        $atencion = Atencion::orderBy('id','DESC')->paginate(10);
+        return view('atencion.index',['aten'=>$atencion,'ActiveMenu'=>'atencion']);
     }
 
     /**
@@ -61,7 +62,9 @@ class AtencionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $atencion = Atencion::Find($id);
+        return view('atencion.edit')
+            ->with('aten',$atencion);
     }
 
     /**

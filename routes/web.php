@@ -38,4 +38,4 @@ Route::put('categorizacion/{id}',[
 
 Route::get('search/alergias','SearchController@alergias');
 
-Route::resource('atencion', 'AtencionController@index');
+Route::resource('atencion', 'AtencionController');
