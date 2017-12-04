@@ -35,3 +35,7 @@ Route::put('categorizacion/{id}',[
     'uses' => 'CategorizacionController@update',
     'as' => 'categorizacion.update'
 ]);
+
+Route::get('search/alergias','SearchController@alergias');
+
+Route::resource('atencion', 'AtencionController');

@@ -33,5 +33,9 @@ class Usuario extends Model
     public function atenciones() {
         return $this->hasMany(Atencion::class);
     }
+    public function alergias(){
+        return $this->belongsToMany(Alergia::class)->withTimestamps();
+    }
+
 
 }

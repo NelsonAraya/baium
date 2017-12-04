@@ -31,8 +31,8 @@
                                     <td>{{ $row->usuario->nombreCompleto() }}  </td>
                                     <td>{{ $row->estado->nombre }}  </td>
                                     <td>
-                                        <a href="{{ route('categorizacion.edit',$row->id) }}" class="btn btn-success justify-content-center">
-                                            <i class="fa fa-heartbeat" aria-hidden="true"></i>
+                                        <a href="{{ route('atencion.edit',$row->id) }}" class="btn btn-success justify-content-center">
+                                            <i class="fa fa-user-md" aria-hidden="true"></i>
                                         </a>
                                         <a href="" class="btn btn-danger justify-content-center">
                                             <i class="fa fa-trash" aria-hidden="true"></i>

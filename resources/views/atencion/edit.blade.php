@@ -1,60 +1,48 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
+<div class="container-fluid">
+   <!-- <div class="row"> -->
         <div class="col-md-12">
             @include('flash::message')
             <div class="panel panel-primary">
-                <div class="panel-heading">Categorizacion SAPU</div>
+                <div class="panel-heading">Atencion SAPU</div>
                 <div class="panel-body">
                     <form id="form-cat" class="form-horizontal" method="POST" action="{{ route('categorizacion.update',$aten->id) }}">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="form-group row">
                             <div class="col-md-2">
-                                <label >R.U.N:</label><br>
-                                <label> {{ $aten->usuario->runCompleto() }}</label>
+                                RUN: <b>{{ $aten->usuario->runCompleto() }}</b>
                             </div>
                             <div class="col-md-2">
-                                <label >R.U.N Acompañante</label><br>
-                                <label> {{ $aten->usuario->run_acompanante }}</label>
+                                RUN Acompañante: <b> {{ $aten->usuario->run_acompanante }} </b> 
                             </div>
                             <div class="col-md-2">
-                                <label >DNI:</label><br>
-                                <label> {{ $aten->usuario->dni }}</label>
+                                DNI: <b> {{ $aten->usuario->dni }} </b> 
                             </div>
-                            <div class="col-md-4">
-                                <label >Usuario:</label><br>
-                                <label> {{ $aten->usuario->nombreCompleto() }}</label>
+                            <div class="col-md-3">
+                                   Usuario: <b> {{ $aten->usuario->nombreCompleto() }} </b> 
                             </div>
                             <div class="col-md-2">
-                                <label >Nacionalidad:</label><br>
-                                <label> {{ $aten->usuario->pais->nombre }}</label>
+                                Nacionalidad: <b> {{ $aten->usuario->pais->nombre }} </b> 
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-2">
-                                <label >Fecha Nacimiento:</label><br>
-                                <label> {{ $aten->usuario->fecha_nacimiento }}</label>
+                                F/Nacimiento: <b> {{ $aten->usuario->fecha_nacimiento }}</b>
                             </div>
                             <div class="col-md-2">
-                                <label >Sexo:</label><br>
-                                <label> {{ $aten->usuario->sexo->nombre }}</label>
+                                Sexo: <b>{{ $aten->usuario->sexo->nombre }} </b>
                             </div>
                             <div class="col-md-2">
-                                <label >Prevision:</label><br>
-                                <label> {{ $aten->usuario->prevision->nombre }}</label>
+                                Prevision: <b> {{ $aten->usuario->prevision->nombre }}</b> 
                             </div>
-                            <div class="col-md-6">
-                                <label >Direccion:</label><br>
-                                <label> {{ $aten->usuario->direccion }}</label>
+                            <div class="col-md-3">
+                                Direccion: <b>{{ $aten->usuario->direccion }}</b>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <label >Motivo consulta SAPU:</label><br>
-                                <label> {{ $aten->motivo }}</label>
+                            <div class="col-md-3">
+                                Motivo: <b>{{ $aten->motivo }}</b>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -128,32 +116,6 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            @foreach($cro as $clave => $row)
-                                    @php
-                                    $flag=false;
-                                    @endphp
-                                @foreach($aten->usuario->cronicos as $cronico)
-
-                                    @if($clave == $cronico->id)
-                                        @php
-                                        $flag=true;
-                                        break;
-                                        @endphp
-                                     @else 
-                                        @php
-                                        $flag=false;
-                                        @endphp   
-                                    @endif
-                                @endforeach           
-                                     <div class="col-md-2">
-                                         <label class="checkbox-inline"><input type="checkbox" name="cronico[]" value="{{ $clave }}" 
-                                          @if($flag) checked="checked" @endif >{{ $row }}
-                                         </label>
-                                     </div>
-     
-                            @endforeach
-                        </div>
-                        <div class="form-group row">
                             <div class="col-md-2">
                                 <label for="categoria">Categoria</label>
                                 <select id="categoria" class="form-control" name="categoria" required>
@@ -211,7 +173,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    <!--</div> -->
 </div>
 <script>
     $(document).ready(function() {

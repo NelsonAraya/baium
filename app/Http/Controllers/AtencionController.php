@@ -2,26 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Atencion;
-use App\AtencionEvento;
-use App\Cronico;
 use Illuminate\Http\Request;
-
-class CategorizacionController extends Controller
+use App\Atencion;
+class AtencionController extends Controller
 {
+    
+    public function __construct(){
+
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $atencion = Atencion::orderBy('id','DESC')->paginate(10);
-        return view('categorizacion.index',['aten'=>$atencion,'ActiveMenu'=>'categorizacion']);
+        return view('atencion.index',['aten'=>$atencion,'ActiveMenu'=>'atencion']);
     }
 
     /**
@@ -65,9 +63,7 @@ class CategorizacionController extends Controller
     public function edit($id)
     {
         $atencion = Atencion::Find($id);
-        $cronico = Cronico::pluck('nombre','id');
-        return view('categorizacion.edit')
-            ->with('cro',$cronico)
+        return view('atencion.edit')
             ->with('aten',$atencion);
     }
 
@@ -80,37 +76,7 @@ class CategorizacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $atencion = Atencion::Find($id);
-
-        $atencion->fill($request->all());
-        $atencion->estado_id=2;
-        $atencion->save();
-        $evento = new AtencionEvento();
-        $evento->profesional_id=auth()->user()->id;
-        $evento->atencion_id=$atencion->id;
-        $evento->evento="Categorizado";
-        $evento->save();
-
-        $atencion->usuario->cronicos()->detach();
-
-        foreach ((array)$request->cronico as $row){
-              $atencion->usuario->cronicos()->attach($row);
-        }
-        
-        $atencion->usuario->alergias()->detach();
-
-        if($request->alergia!='vacio'){
-            $detalle = array_unique(json_decode($request->alergia, true),SORT_REGULAR);
-            foreach ($detalle as $row) {
-              $atencion->usuario->alergias()->attach($row['ID']);
-            }
-        }
-       
-        flash('Paciente Categorizado Correctamente');
-        return redirect()->route('categorizacion');
-        
-
+        //
     }
 
     /**
